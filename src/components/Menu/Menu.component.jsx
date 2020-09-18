@@ -4,6 +4,7 @@ import { Navbar, Nav, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
 import UserInfo from '../UserInfo';
+import Searchbar from '../Searchbar/Searchbar.component';
 
 const Menu = () => {
   const { authenticated, logout } = useAuth();
@@ -29,6 +30,7 @@ const Menu = () => {
           </Nav>
         </Navbar.Collapse>
       )}
+      {authenticated && <Searchbar />}
       {authenticated && (
         <Button variant="outline-danger" onClick={deAuthenticate}>
           Logout

@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Form, FormControl, Button } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
+import VideosContext from '../../utils/state/VideosContext';
 
 const Searchbar = () => {
+  const history = useHistory();
+  const [search, setSearch] = useState('');
+  const { dispatch } = useContext(VideosContext);
+
+  const setVideoQuery = () => {
+    dispatch({ type: 'SEARCH_VIDEOS', payload: search });
+    history.push('/search');
+  };
+
+  const handleSearchChange = (event) => {
+    const query = event.target.value;
+    setSearch(query);
+  };
+
   return (
     <Form inline>
-      <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-      <Button variant="outline-info">Search</Button>
+      <FormControl
+        onChange={handleSearchChange}
+        type="text"
+        placeholder="Search"
+        className="mr-sm-2"
+      />
+      <Button onClick={setVideoQuery} variant="outline-info">
+        Search
+      </Button>
     </Form>
   );
 };
