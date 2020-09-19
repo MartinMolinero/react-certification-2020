@@ -17,9 +17,7 @@ function VideoDetailPage() {
           <FavItem id={id} />
         </Col>
         <Col md={4}>
-          <VideoList width={12} videos={videos}>
-            Container
-          </VideoList>
+          <VideoList width={12} videos={videos}></VideoList>
         </Col>
       </Row>
     </div>

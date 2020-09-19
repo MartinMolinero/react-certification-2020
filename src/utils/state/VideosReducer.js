@@ -9,7 +9,7 @@ const removeVideoFromFavorites = (videoList, favoriteId) => {
 };
 
 const VideosReducer = (state, action) => {
-  console.log('dispatching', state, action);
+  // console.log('dispatching', state, action);
   let parsedState = {};
   let videoState = {};
   let favorites = [];
@@ -27,12 +27,9 @@ const VideosReducer = (state, action) => {
       storage.set('videos', JSON.stringify(videoState));
       return videoState;
     case 'SAVE_VIDEO_TO_FAVORITES':
-      console.log('VIDEOS', state.videos);
       foundVideo = findVideo(state.videos, action.payload);
-      console.log('FOUND', foundVideo);
       favorites = [foundVideo, ...((state && state.favorites) || [])];
       videoState = { ...state, favorites };
-      console.log('new video state', videoState);
       storage.set('videos', JSON.stringify(videoState));
       return videoState;
     case 'REMOVE_VIDEO_FROM_FAVORITES':

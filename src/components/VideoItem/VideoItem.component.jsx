@@ -1,18 +1,26 @@
 import React from 'react';
 import { Card, Col } from 'react-bootstrap';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { formatDate } from '../../utils/dateUtils';
+import FavItem from '../Fav';
 
 const VideoItem = ({ video }) => {
   const history = useHistory();
+  const location = useLocation();
 
   const redirectToVideoDetailPage = (videoId) => {
-    history.push(`video/${videoId}`);
+    history.replace(`video/${videoId}`);
   };
+
   const videoInfo = {
     ...video.id,
     ...video.snippet,
   };
+
+  const isOnFavoritesPage = () => {
+    return location.pathname === '/favorites';
+  };
+
   return (
     <Col>
       <Card>
@@ -29,6 +37,7 @@ const VideoItem = ({ video }) => {
           <small className="text-muted">
             Uploaded: {formatDate(videoInfo.publishedAt)}
           </small>
+          {isOnFavoritesPage() && <FavItem id={videoInfo.videoId} />}
         </Card.Footer>
       </Card>
     </Col>
