@@ -4,9 +4,9 @@ const findVideo = (videoList, favoriteId) => {
   return videoList.find((element) => element.id.videoId === favoriteId);
 };
 
-// const removeVideoFromFavorites = (videoList, favoriteId) => {
-//   return videoList.filter((element) => element.id !== favoriteId);
-// };
+const removeVideoFromFavorites = (videoList, favoriteId) => {
+  return videoList.filter((element) => element.id.videoId !== favoriteId);
+};
 
 const VideosReducer = (state, action) => {
   console.log('dispatching', state, action);
@@ -30,15 +30,13 @@ const VideosReducer = (state, action) => {
       console.log('VIDEOS', state.videos);
       foundVideo = findVideo(state.videos, action.payload);
       console.log('FOUND', foundVideo);
-      // favorites = [...((state && state.favorites) || []), action.payload];
-      favorites = [...((state && state.favorites) || []), foundVideo];
+      favorites = [foundVideo, ...((state && state.favorites) || [])];
       videoState = { ...state, favorites };
       console.log('new video state', videoState);
       storage.set('videos', JSON.stringify(videoState));
       return videoState;
     case 'REMOVE_VIDEO_FROM_FAVORITES':
-      favorites = state.favorites.filter((fav) => fav !== action.payload);
-      // favorites = removeVideoFromFavorites(state.favorites, action.payload);
+      favorites = removeVideoFromFavorites(state.favorites, action.payload);
       videoState = { ...state, favorites };
       storage.set('videos', JSON.stringify(videoState));
       return videoState;

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import styled from 'styled-components';
@@ -20,8 +20,14 @@ const FavItem = ({ id }) => {
   };
 
   const isFavorite = () => {
-    return ((state && state.favorites) || []).find((element) => element === id);
+    return ((state && state.favorites) || []).find(
+      (element) => element.id.videoId === id
+    );
   };
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_VIDEOS_STATE' });
+  }, []);
 
   return (
     <div>

@@ -8,7 +8,7 @@ import { useRelatedVideos } from '../../utils/hooks/useRelatedVideos';
 
 function VideoDetailPage() {
   const { id } = useParams();
-  const videos = useRelatedVideos(id);
+  const { videos } = useRelatedVideos(id);
   return (
     <div>
       <Row>

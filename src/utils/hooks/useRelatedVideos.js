@@ -1,9 +1,9 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import youtubeAPI from '../API/youtubeAPI';
-import VideosContext from '../state/VideosContext';
 
 function useRelatedVideos(videoId) {
-  const { state, dispatch } = useContext(VideosContext);
+  const [videos, setVideos] = useState([]);
+
   async function fetchRelatedVideos() {
     const response = await youtubeAPI.get('/search', {
       params: {
@@ -11,14 +11,14 @@ function useRelatedVideos(videoId) {
         type: 'video',
       },
     });
-    dispatch({ type: 'SET_VIDEOS', payload: response.data.items });
+    setVideos(response.data.items);
   }
 
   useEffect(() => {
     fetchRelatedVideos();
   }, []);
 
-  return (state && state.videos) || [];
+  return { videos };
 }
 
 export { useRelatedVideos };

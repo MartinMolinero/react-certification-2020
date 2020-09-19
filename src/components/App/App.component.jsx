@@ -10,6 +10,7 @@ import Layout from '../Layout';
 import { random } from '../../utils/fns';
 import Menu from '../Menu';
 import ExplorePage from '../../pages/Explore/Explore.page';
+import FavoritesPage from '../../pages/Favorites/Favorites.page';
 import VideoDetailPage from '../../pages/VideoDetail/VideoDetail.page';
 import VideosReducer from '../../utils/state/VideosReducer';
 import VideosContext from '../../utils/state/VideosContext';
@@ -58,6 +59,9 @@ function App() {
                 </Private>
                 <Private exact path="/search">
                   <SearchResultsPage />
+                </Private>
+                <Private exact path="/favorites">
+                  <FavoritesPage />
                 </Private>
                 <Route exact path="/video/:id">
                   <VideoDetailPage />
