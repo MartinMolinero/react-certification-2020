@@ -8,6 +8,7 @@ function useRelatedVideos(videoId) {
     const response = await youtubeAPI.get('/search', {
       params: {
         relatedToVideoId: videoId,
+        type: 'video',
       },
     });
     dispatch({ type: 'SET_VIDEOS', payload: response.data.items });
