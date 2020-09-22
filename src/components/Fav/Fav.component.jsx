@@ -20,14 +20,15 @@ const FavItem = ({ id }) => {
   };
 
   const isFavorite = () => {
-    return ((state && state.favorites) || []).find(
+    if (!state) return false;
+    return (state.favorites|| []).find(
       (element) => element.id.videoId === id
     );
   };
 
   useEffect(() => {
     dispatch({ type: 'FETCH_VIDEOS_STATE' });
-  }, []);
+  }, [id]);
 
   return (
     <div>
