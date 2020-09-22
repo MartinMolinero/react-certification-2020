@@ -21,9 +21,7 @@ const FavItem = ({ id }) => {
 
   const isFavorite = () => {
     if (!state) return false;
-    return (state.favorites|| []).find(
-      (element) => element.id.videoId === id
-    );
+    return (state.favorites || []).find((element) => element.id.videoId === id);
   };
 
   useEffect(() => {
