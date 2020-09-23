@@ -9,7 +9,7 @@ const VideoItem = ({ video }) => {
   const location = useLocation();
 
   const redirectToVideoDetailPage = (videoId) => {
-    history.replace(`video/${videoId}`);
+    history.replace(`/video/${videoId}`);
   };
 
   const videoInfo = {

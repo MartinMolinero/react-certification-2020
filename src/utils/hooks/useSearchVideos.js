@@ -15,7 +15,7 @@ function useSearchVideos() {
 
   useEffect(() => {
     fetchQueriedVideos();
-  }, []);
+  }, [state.search]);
 
   return (state && state.videos) || [];
 }

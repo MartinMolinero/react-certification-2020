@@ -1,12 +1,5 @@
 import { storage } from '../storage';
-
-const findVideo = (videoList, favoriteId) => {
-  return videoList.find((element) => element.id.videoId === favoriteId);
-};
-
-const removeVideoFromFavorites = (videoList, favoriteId) => {
-  return videoList.filter((element) => element.id.videoId !== favoriteId);
-};
+import { findVideo, removeVideoFromFavorites, removeRepeatedVideos } from '../arrayUtils';
 
 const VideosReducer = (state, action) => {
   // console.log('dispatching', state, action);
@@ -14,6 +7,7 @@ const VideosReducer = (state, action) => {
   let videoState = {};
   let favorites = [];
   let foundVideo = {};
+  let newVideosArray = [];
   switch (action.type) {
     case 'SEARCH_VIDEOS':
       videoState = { ...state, search: action.payload };
@@ -24,6 +18,11 @@ const VideosReducer = (state, action) => {
       return parsedState;
     case 'SET_VIDEOS':
       videoState = { ...state, videos: action.payload };
+      storage.set('videos', JSON.stringify(videoState));
+      return videoState;
+    case 'CONCAT_VIDEOS':
+      newVideosArray = removeRepeatedVideos([...state.videos, ...action.payload]);
+      videoState = { ...state, videos: newVideosArray };
       storage.set('videos', JSON.stringify(videoState));
       return videoState;
     case 'SAVE_VIDEO_TO_FAVORITES':
