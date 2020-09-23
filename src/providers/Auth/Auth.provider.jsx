@@ -55,6 +55,7 @@ function AuthProvider({ children }) {
     setAuthenticatedUser(null);
     storage.set(AUTH_STORAGE_KEY, false);
     storage.set('user', null);
+    storage.set('videos', null);
   }, []);
 
   return (
