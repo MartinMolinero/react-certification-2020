@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useReducer } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
@@ -7,40 +7,18 @@ import NotFound from '../../pages/NotFound';
 import SecretPage from '../../pages/Secret';
 import Private from '../Private';
 import Layout from '../Layout';
-import { random } from '../../utils/fns';
 import Menu from '../Menu';
 import ExplorePage from '../../pages/Explore/Explore.page';
 import FavoritesPage from '../../pages/Favorites/Favorites.page';
 import VideoDetailPage from '../../pages/VideoDetail/VideoDetail.page';
-import VideosReducer from '../../utils/state/VideosReducer';
-import VideosContext from '../../utils/state/VideosContext';
 import SearchResultsPage from '../../pages/SearchResults/SearchResults.page';
+import { VideosProvider } from '../../utils/state/videosProvider';
 
 function App() {
-  useLayoutEffect(() => {
-    const { body } = document;
-
-    function rotateBackground() {
-      const xPercent = random(100);
-      const yPercent = random(100);
-      body.style.setProperty('--bg-position', `${xPercent}% ${yPercent}%`);
-    }
-
-    const intervalId = setInterval(rotateBackground, 3000);
-    body.addEventListener('click', rotateBackground);
-
-    return () => {
-      clearInterval(intervalId);
-      body.removeEventListener('click', rotateBackground);
-    };
-  }, []);
-
-  const [state, dispatch] = useReducer(VideosReducer, {});
-
   return (
     <>
       <AuthProvider>
-        <VideosContext.Provider value={{ state, dispatch }}>
+        <VideosProvider>
           <BrowserRouter>
             <Menu />
             <Layout>
@@ -72,7 +50,7 @@ function App() {
               </Switch>
             </Layout>
           </BrowserRouter>
-        </VideosContext.Provider>
+        </VideosProvider>
       </AuthProvider>
     </>
   );

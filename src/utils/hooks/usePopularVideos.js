@@ -3,7 +3,7 @@ import youtubeAPI from '../API/youtubeAPI';
 import VideosContext from '../state/VideosContext';
 
 function usePopularVideos() {
-  const { state, dispatch } = useContext(VideosContext);
+  const { videos, setVideos } = useContext(VideosContext);
   async function fetchVideos() {
     const response = await youtubeAPI.get('/search', {
       params: {
@@ -11,14 +11,14 @@ function usePopularVideos() {
         regionCode: 'mx',
       },
     });
-    dispatch({ type: 'SET_VIDEOS', payload: response.data.items });
+    setVideos(response.data.items);
   }
 
   useEffect(() => {
     fetchVideos();
   }, []);
 
-  return (state && state.videos) || [];
+  return videos || [];
 }
 
 export { usePopularVideos };

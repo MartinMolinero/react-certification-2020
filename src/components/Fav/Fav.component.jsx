@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import styled from 'styled-components';
@@ -9,35 +9,18 @@ const Red = styled.div`
 `;
 
 const FavItem = ({ id }) => {
-  const { state, dispatch } = useContext(VideosContext);
-
-  const saveFavoriteVideo = () => {
-    dispatch({ type: 'SAVE_VIDEO_TO_FAVORITES', payload: id });
-  };
-
-  const removeFavoriteVideo = () => {
-    dispatch({ type: 'REMOVE_VIDEO_FROM_FAVORITES', payload: id });
-  };
-
-  const isFavorite = () => {
-    return ((state && state.favorites) || []).find(
-      (element) => element.id.videoId === id
-    );
-  };
-
-  useEffect(() => {
-    dispatch({ type: 'FETCH_VIDEOS_STATE' });
-  }, []);
-
+  const { saveFavoriteVideo, removeFavoriteVideo, isFavorite } = useContext(
+    VideosContext
+  );
   return (
     <div>
-      {isFavorite() ? (
+      {isFavorite(id) ? (
         <Red>
-          <FavoriteIcon onClick={removeFavoriteVideo} />
+          <FavoriteIcon onClick={() => removeFavoriteVideo(id)} />
         </Red>
       ) : (
         <Red>
-          <FavoriteBorderIcon onClick={saveFavoriteVideo} />
+          <FavoriteBorderIcon onClick={() => saveFavoriteVideo(id)} />
         </Red>
       )}
     </div>

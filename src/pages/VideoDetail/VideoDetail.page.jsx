@@ -11,9 +11,9 @@ import VideosContext from '../../utils/state/VideosContext';
 function VideoDetailPage() {
   const { id } = useParams();
   const videos = useRelatedVideos(id);
-  const { dispatch } = useContext(VideosContext);
+  const { fetchVideosState } = useContext(VideosContext);
   useEffect(() => {
-    dispatch({ type: 'FETCH_VIDEOS_STATE' });
+    fetchVideosState();
   }, [id]);
   const relatedVideos = filterLastRelatedVideos(videos);
   return (

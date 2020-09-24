@@ -6,10 +6,10 @@ import VideosContext from '../../utils/state/VideosContext';
 const Searchbar = () => {
   const history = useHistory();
   const [search, setSearch] = useState('');
-  const { dispatch } = useContext(VideosContext);
+  const { setSearchQuery } = useContext(VideosContext);
 
   const setVideoQuery = () => {
-    dispatch({ type: 'SEARCH_VIDEOS', payload: search });
+    setSearchQuery(search);
     history.push('/search');
   };
 

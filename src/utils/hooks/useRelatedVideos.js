@@ -3,8 +3,7 @@ import youtubeAPI from '../API/youtubeAPI';
 import VideosContext from '../state/VideosContext';
 
 function useRelatedVideos(videoId) {
-  const { state, dispatch } = useContext(VideosContext);
-
+  const { videos, concatVideos } = useContext(VideosContext);
   async function fetchRelatedVideos() {
     const response = await youtubeAPI.get('/search', {
       params: {
@@ -12,14 +11,14 @@ function useRelatedVideos(videoId) {
         type: 'video',
       },
     });
-    dispatch({ type: 'CONCAT_VIDEOS', payload: response.data.items });
+    concatVideos(response.data.items);
   }
 
   useEffect(() => {
     fetchRelatedVideos();
   }, [videoId]);
 
-  return state.videos;
+  return videos;
 }
 
 export { useRelatedVideos };

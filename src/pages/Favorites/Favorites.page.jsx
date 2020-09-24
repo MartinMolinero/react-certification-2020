@@ -4,14 +4,14 @@ import VideoList from '../../components/VideoList';
 import VideosContext from '../../utils/state/VideosContext';
 
 function FavoritesPage() {
-  const { state, dispatch } = useContext(VideosContext);
+  const { favorites, fetchVideosState } = useContext(VideosContext);
   useEffect(() => {
-    dispatch({ type: 'FETCH_VIDEOS_STATE' });
+    fetchVideosState();
   }, []);
   return (
     <Container fluid>
       <Row>
-        <VideoList width={12} videos={state.favorites} />
+        <VideoList width={12} videos={favorites} />
       </Row>
     </Container>
   );

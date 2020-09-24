@@ -5,10 +5,11 @@ import { usePopularVideos } from '../../utils/hooks/usePopularVideos';
 import VideosContext from '../../utils/state/VideosContext';
 
 function ExplorePage() {
+  const { fetchVideosState } = useContext(VideosContext);
+  console.log('AAAA', useContext(VideosContext));
   const videos = usePopularVideos();
-  const { dispatch } = useContext(VideosContext);
   useEffect(() => {
-    dispatch({ type: 'FETCH_VIDEOS_STATE' });
+    fetchVideosState();
   }, []);
   return (
     <Container fluid>
