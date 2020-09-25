@@ -26,7 +26,7 @@ const Searchbar = () => {
     <Form onSubmit={setVideoQuery} style={{ width: '90%', display: 'inline' }}>
       <FormControl id="query-input" onChange={handleSearchChange} placeholder="Search" />
       <Button id="search-button" onClick={setVideoQuery} variant="outline-info">
-        <SearchIcon></SearchIcon>
+        <SearchIcon />
       </Button>
     </Form>
   );

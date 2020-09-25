@@ -6,8 +6,13 @@ const VideoList = ({ width, videos }) => {
   return (
     <Col md={width}>
       <Row style={{ overflow: 'hidden' }}>
-        {videos &&
-          videos.map((video) => <VideoItem key={video.id.videoId} video={video} />)}
+        {videos && videos.lenght > 0 ? (
+          videos.map((video) => <VideoItem key={video.id.videoId} video={video} />)
+        ) : (
+          <div>
+            <h4>No videos found</h4>
+          </div>
+        )}
       </Row>
     </Col>
   );

@@ -16,9 +16,7 @@ const Menu = () => {
   }
   return (
     <Navbar collapseOnSelect expand="lg">
-      <Navbar.Brand href="/">
-        {authenticated && <UserInfo />}
-      </Navbar.Brand>
+      <Navbar.Brand href="/">{authenticated && <UserInfo />}</Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav>

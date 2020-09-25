@@ -9,7 +9,6 @@ export const initialState = {
 };
 
 export function NewVideosReducer(state, action) {
-  console.log('dispatching', state, action);
   let parsedState = {};
   let videoState = {};
   let favorites = [];
