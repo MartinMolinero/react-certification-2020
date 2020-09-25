@@ -6,7 +6,6 @@ import { storage } from '../../utils/storage';
 
 function Private({ children, ...rest }) {
   const { authenticated } = useAuth();
-  console.log('AUTHENTICATED', authenticated);
   const isAuthenticated = () => {
     return authenticated || Boolean(JSON.parse(storage.get('user')));
   };

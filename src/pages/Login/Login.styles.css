@@ -1,5 +1,8 @@
 .login {
   width: 300px;
+  margin-right: auto;
+  margin-left: auto;
+  transform: translateY(20%);
 }
 
 .login h1 {

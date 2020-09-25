@@ -38,7 +38,7 @@ function LoginPage() {
     <Redirect to="/" />
   ) : (
     <section className="login">
-      <h1>Welcome back!</h1>
+      <h1>Welcome to Videos!</h1>
       <form onSubmit={authenticate} className="login-form">
         <div className="form-group">
           <label htmlFor="username">

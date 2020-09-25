@@ -6,7 +6,6 @@ import VideosContext from '../../utils/state/VideosContext';
 
 function ExplorePage() {
   const { fetchVideosState } = useContext(VideosContext);
-  console.log('AAAA', useContext(VideosContext));
   const videos = usePopularVideos();
   useEffect(() => {
     fetchVideosState();

@@ -29,7 +29,6 @@ export function NewVideosReducer(state, action) {
       storage.set('videos', JSON.stringify(videoState));
       return videoState;
     case ACTIONSENUM.CONCAT_VIDEOS:
-      console.log('CONCAT_VIDEOS', payload);
       newVideosArray = removeRepeatedVideos([...state.videos, ...payload]);
       videoState = { ...state, videos: newVideosArray };
       storage.set('videos', JSON.stringify(videoState));

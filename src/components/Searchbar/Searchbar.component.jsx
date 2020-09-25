@@ -8,7 +8,9 @@ const Searchbar = () => {
   const [search, setSearch] = useState('');
   const { setSearchQuery } = useContext(VideosContext);
 
-  const setVideoQuery = () => {
+  const setVideoQuery = (e) => {
+    e.preventDefault();
+    if (!search) return;
     setSearchQuery(search);
     history.push('/search');
   };
@@ -19,14 +21,13 @@ const Searchbar = () => {
   };
 
   return (
-    <Form inline>
+    <Form onSubmit={setVideoQuery}>
       <FormControl
+        style={{ width: '60%' }}
         onChange={handleSearchChange}
-        type="text"
         placeholder="Search"
-        className="mr-sm-2"
       />
-      <Button onClick={setVideoQuery} variant="outline-info">
+      <Button style={{ display: 'inline' }} onClick={setVideoQuery}>
         Search
       </Button>
     </Form>
