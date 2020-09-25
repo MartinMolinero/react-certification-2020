@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import SearchIcon from '@material-ui/icons/Search';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import VideosContext from '../../utils/state/VideosContext';
@@ -24,8 +25,8 @@ const Searchbar = () => {
   return (
     <Form onSubmit={setVideoQuery} style={{ width: '90%', display: 'inline' }}>
       <FormControl id="query-input" onChange={handleSearchChange} placeholder="Search" />
-      <Button id="search-button" onClick={setVideoQuery}>
-        Search
+      <Button id="search-button" onClick={setVideoQuery} variant="outline-info">
+        <SearchIcon></SearchIcon>
       </Button>
     </Form>
   );
