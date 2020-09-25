@@ -9,7 +9,7 @@ function HomePage() {
   const { authenticated } = useAuth();
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
+      <h1>Welcome to the challenge!</h1>
       {authenticated ? <Redirect to="/explore" /> : <Link to="/login">let me in →</Link>}
     </section>
   );
