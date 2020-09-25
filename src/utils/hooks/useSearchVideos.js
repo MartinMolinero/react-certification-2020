@@ -1,6 +1,6 @@
 import { useEffect, useContext } from 'react';
 import youtubeAPI from '../API/youtubeAPI';
-import VideosContext from '../state/VideosContext';
+import VideosContext from '../../providers/Videos/VideosContext';
 
 function useSearchVideos() {
   const { search, videos, setVideos } = useContext(VideosContext);

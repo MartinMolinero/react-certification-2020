@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import VideosContext from '../../utils/state/VideosContext';
+import VideosContext from '../../providers/Videos/VideosContext';
 import { RedFilledHeart, RedBorderHeart } from './Heart.styled';
 
 const HeartItem = ({ id }) => {

@@ -4,7 +4,6 @@ import AuthProvider from '../../providers/Auth';
 import HomePage from '../../pages/Home';
 import LoginPage from '../../pages/Login';
 import NotFound from '../../pages/NotFound';
-import SecretPage from '../../pages/Secret';
 import Private from '../Private';
 import Layout from '../Layout';
 import Menu from '../Menu';
@@ -12,7 +11,7 @@ import ExplorePage from '../../pages/Explore/Explore.page';
 import FavoritesPage from '../../pages/Favorites/Favorites.page';
 import VideoDetailPage from '../../pages/VideoDetail/VideoDetail.page';
 import SearchResultsPage from '../../pages/SearchResults/SearchResults.page';
-import { VideosProvider } from '../../utils/state/videosProvider';
+import { VideosProvider } from '../../providers/Videos/videosProvider';
 
 function App() {
   return (
@@ -29,9 +28,6 @@ function App() {
                 <Route exact path="/login">
                   <LoginPage />
                 </Route>
-                <Private exact path="/secret">
-                  <SecretPage />
-                </Private>
                 <Private exact path="/explore">
                   <ExplorePage />
                 </Private>

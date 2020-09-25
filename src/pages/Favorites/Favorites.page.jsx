@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import VideoList from '../../components/VideoList';
-import VideosContext from '../../utils/state/VideosContext';
+import VideosContext from '../../providers/Videos/VideosContext';
 
 function FavoritesPage() {
   const { favorites, fetchVideosState } = useContext(VideosContext);

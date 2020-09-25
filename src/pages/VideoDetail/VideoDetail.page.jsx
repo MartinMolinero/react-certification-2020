@@ -7,7 +7,7 @@ import VideoList from '../../components/VideoList/VideoList.component';
 import VideoVisualizer from '../../components/VideoVisualizer';
 import { filterLastRelatedVideos, findVideo } from '../../utils/arrayUtils';
 import { useRelatedVideos } from '../../utils/hooks/useRelatedVideos';
-import VideosContext from '../../utils/state/VideosContext';
+import VideosContext from '../../providers/Videos/VideosContext';
 import { flattenVideoStructure } from '../../utils/videoUtils';
 
 function VideoDetailPage() {

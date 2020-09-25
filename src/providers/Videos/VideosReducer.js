@@ -1,5 +1,9 @@
-import { storage } from '../storage';
-import { findVideo, removeVideoFromFavorites, removeRepeatedVideos } from '../arrayUtils';
+import { storage } from '../../utils/storage';
+import {
+  findVideo,
+  removeVideoFromFavorites,
+  removeRepeatedVideos,
+} from '../../utils/arrayUtils';
 import { ACTIONSENUM } from './videosActions';
 
 export const initialState = {

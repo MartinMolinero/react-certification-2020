@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import VideosContext from '../../utils/state/VideosContext';
+import VideosContext from '../../providers/Videos/VideosContext';
 import './Searchbar.css';
 
 const Searchbar = () => {

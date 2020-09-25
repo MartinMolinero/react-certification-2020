@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import VideoList from '../../components/VideoList';
 import { usePopularVideos } from '../../utils/hooks/usePopularVideos';
-import VideosContext from '../../utils/state/VideosContext';
+import VideosContext from '../../providers/Videos/VideosContext';
 
 function ExplorePage() {
   const { fetchVideosState } = useContext(VideosContext);

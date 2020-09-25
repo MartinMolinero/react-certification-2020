@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import VideoList from '../../components/VideoList';
 import { useSearchVideos } from '../../utils/hooks/useSearchVideos';
-import VideosContext from '../../utils/state/VideosContext';
+import VideosContext from '../../providers/Videos/VideosContext';
 
 function SearchResultsPage() {
   const { search, fetchVideosState } = useContext(VideosContext);
