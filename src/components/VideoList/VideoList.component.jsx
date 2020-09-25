@@ -6,7 +6,7 @@ const VideoList = ({ width, videos }) => {
   return (
     <Col md={width}>
       <Row style={{ overflow: 'hidden' }}>
-        {videos && videos.lenght > 0 ? (
+        {videos && videos.length > 0 ? (
           videos.map((video) => <VideoItem key={video.id.videoId} video={video} />)
         ) : (
           <div>
