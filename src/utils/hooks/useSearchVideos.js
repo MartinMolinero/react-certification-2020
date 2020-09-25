@@ -5,12 +5,18 @@ import VideosContext from '../state/VideosContext';
 function useSearchVideos() {
   const { search, videos, setVideos } = useContext(VideosContext);
   async function fetchQueriedVideos() {
-    const response = await youtubeAPI.get('/search', {
-      params: {
-        q: search,
-      },
-    });
-    setVideos(response.data.items);
+    youtubeAPI
+      .get('/search', {
+        params: {
+          q: search,
+        },
+      })
+      .then((response) => {
+        setVideos(response.data.items);
+      })
+      .catch((err) => {
+        console.log('Error ', err);
+      });
   }
 
   useEffect(() => {

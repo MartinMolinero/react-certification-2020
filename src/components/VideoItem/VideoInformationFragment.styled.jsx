@@ -15,7 +15,6 @@ const VideoInformationFragment = ({
   redirectToVideoDetailPage,
   children,
 }) => {
-  console.log('NP', noPadding);
   return (
     <VideoInformationContainer style={{ padding: noPadding ? '0' : '' }}>
       <TitleContainer onClick={() => redirectToVideoDetailPage(videoId)}>

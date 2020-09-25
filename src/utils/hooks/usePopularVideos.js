@@ -4,14 +4,20 @@ import VideosContext from '../state/VideosContext';
 
 function usePopularVideos() {
   const { videos, setVideos } = useContext(VideosContext);
-  async function fetchVideos() {
-    const response = await youtubeAPI.get('/search', {
-      params: {
-        chart: 'mostPopular',
-        regionCode: 'mx',
-      },
-    });
-    setVideos(response.data.items);
+  function fetchVideos() {
+    youtubeAPI
+      .get('/search', {
+        params: {
+          chart: 'mostPopular',
+          regionCode: 'mx',
+        },
+      })
+      .then((response) => {
+        setVideos(response.data.items);
+      })
+      .catch((error) => {
+        console.log('Error', error);
+      });
   }
 
   useEffect(() => {

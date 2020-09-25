@@ -1,5 +1,8 @@
 .homepage {
   text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20%;
 }
 
 .homepage h1 {

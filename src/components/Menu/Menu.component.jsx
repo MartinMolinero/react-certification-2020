@@ -1,10 +1,10 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Navbar, Nav, Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
 import UserInfo from '../UserInfo';
 import Searchbar from '../Searchbar/Searchbar.component';
+import './MenuComponent.css';
 
 const Menu = () => {
   const { authenticated, logout } = useAuth();
@@ -15,27 +15,23 @@ const Menu = () => {
     history.push('/');
   }
   return (
-    <Navbar bg="light" expand="lg">
-      {authenticated && <UserInfo />}
-      <Navbar>
-        <Link to="/">Videos challenge</Link>
-      </Navbar>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      {authenticated && (
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <div>
-              <Link to="/favorites">Favorites</Link>
-            </div>
-          </Nav>
-        </Navbar.Collapse>
-      )}
-      {authenticated && <Searchbar />}
-      {authenticated && (
-        <Button variant="outline-danger" onClick={deAuthenticate}>
-          Logout
-        </Button>
-      )}
+    <Navbar collapseOnSelect expand="lg">
+      <Navbar.Brand href="#home">{authenticated && <UserInfo />}</Navbar.Brand>
+      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav>
+          <Nav.Link href="/">Videos challenge</Nav.Link>
+          {authenticated && <Nav.Link href="/favorites">Favorites</Nav.Link>}
+        </Nav>
+        {authenticated && <Searchbar />}
+        <Nav>
+          {authenticated && (
+            <Button variant="outline-danger" onClick={deAuthenticate}>
+              Logout
+            </Button>
+          )}
+        </Nav>
+      </Navbar.Collapse>
     </Navbar>
   );
 };

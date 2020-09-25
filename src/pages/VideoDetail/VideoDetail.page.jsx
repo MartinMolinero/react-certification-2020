@@ -17,7 +17,7 @@ function VideoDetailPage() {
   useEffect(() => {
     fetchVideosState();
   }, [id]);
-  const relatedVideos = filterLastRelatedVideos(videos);
+  const relatedVideos = filterLastRelatedVideos(videos, id);
   const currentVideo = flattenVideoStructure(findVideo(videos, id));
   return (
     <div>
