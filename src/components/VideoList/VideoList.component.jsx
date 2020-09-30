@@ -5,7 +5,7 @@ import VideoItem from '../VideoItem';
 const VideoList = ({ width, videos }) => {
   return (
     <Col md={width}>
-      <Row style={{ overflow: 'hidden' }}>
+      <Row style={{ overflow: 'hidden' }} data-testid="row-videos-container">
         {videos && videos.length > 0 ? (
           videos.map((video) => <VideoItem key={video.id.videoId} video={video} />)
         ) : (

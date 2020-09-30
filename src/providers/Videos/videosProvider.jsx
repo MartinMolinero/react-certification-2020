@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import VideosReducer, { initialState } from './VideosReducer';
+import  { VideosReducer, initialState } from './VideosReducer';
 import {
   concatVideosAction,
   fetchVideosStateAction,
@@ -15,7 +15,7 @@ export const VideosProvider = ({ children }) => {
     ...initialState,
   });
   const isFavorite = (id) => {
-    if (!state.favorites) return false;
+    if (!state || !state.favorites) return false;
     return state.favorites.find((element) => element.id.videoId === id);
   };
   const value = {

@@ -43,17 +43,31 @@ function LoginPage() {
         <div className="form-group">
           <label htmlFor="username">
             <strong>username </strong>
-            <input onChange={handleInputChange} required type="text" id="username" />
+            <input
+              onChange={handleInputChange}
+              required
+              type="text"
+              id="username"
+              data-testid="username-field"
+            />
           </label>
         </div>
         <div className="form-group">
           <label htmlFor="password">
             <strong>password </strong>
-            <input onChange={handleInputChange} required type="password" id="password" />
+            <input
+              onChange={handleInputChange}
+              required
+              type="password"
+              id="password"
+              data-testid="password-field"
+            />
           </label>
         </div>
         {error && <p>{error}</p>}
-        <button type="submit">login</button>
+        <button data-testid="login-submit-button" type="submit">
+          login
+        </button>
       </form>
     </section>
   );

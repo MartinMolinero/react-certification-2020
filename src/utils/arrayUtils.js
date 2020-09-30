@@ -11,14 +11,17 @@ const filterLastRelatedVideos = (array, id) => {
 };
 
 const findVideo = (videoList, favoriteId) => {
+  if (!videoList || !favoriteId) return false;
   return videoList.find((element) => element.id.videoId === favoriteId);
 };
 
 const removeVideoFromFavorites = (videoList, favoriteId) => {
+  if (!videoList || !favoriteId) return [];
   return videoList.filter((element) => element.id.videoId !== favoriteId);
 };
 
 const removeRepeatedVideos = (videoList) => {
+  if (!videoList) return [];
   return videoList.filter(
     (v, i, a) => a.findIndex((t) => t.id.videoId === v.id.videoId) === i
   );

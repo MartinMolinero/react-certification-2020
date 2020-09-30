@@ -15,13 +15,13 @@ const UserInfoContainer = styled.div`
 
 const UserInfo = () => {
   const { authenticatedUser } = useAuth();
-  return (
-    authenticatedUser && (
-      <UserInfoContainer>
-        <UserAvatar src={authenticatedUser.avatarUrl} />
-        <span>{authenticatedUser.name}</span>
-      </UserInfoContainer>
-    )
+  return authenticatedUser ? (
+    <UserInfoContainer>
+      <UserAvatar src={authenticatedUser.avatarUrl} />
+      <span>{authenticatedUser.name}</span>
+    </UserInfoContainer>
+  ) : (
+    <div data-testid="unauthenticated-user" />
   );
 };
 

@@ -16,8 +16,14 @@ const VideoInformationFragment = ({
   children,
 }) => {
   return (
-    <VideoInformationContainer style={{ padding: noPadding ? '0' : '' }}>
-      <TitleContainer onClick={() => redirectToVideoDetailPage(videoId)}>
+    <VideoInformationContainer
+      data-testid="video-information-container"
+      style={{ padding: noPadding ? '0' : '' }}
+    >
+      <TitleContainer
+        data-testid="video-item-title"
+        onClick={() => redirectToVideoDetailPage(videoId)}
+      >
         {title}
       </TitleContainer>
       <ChannelContainer>{channelTitle}</ChannelContainer>

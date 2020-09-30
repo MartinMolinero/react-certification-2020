@@ -21,9 +21,10 @@ const VideoItem = ({ video }) => {
   };
 
   return (
-    <Col>
+    <Col data-testid="video-item">
       <VideoCard>
         <CardImage
+          data-testid="video-card-image"
           onClick={() => redirectToVideoDetailPage(videoInfo.videoId)}
           variant="top"
           src={videoInfo.thumbnails.high.url}

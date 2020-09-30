@@ -12,7 +12,7 @@ function SearchResultsPage() {
   const videos = useSearchVideos();
   return (
     <Container fluid>
-      <h2>Search results for {search}</h2>
+      <h2 data-testid="search-term-container">Search results for {search}</h2>
       <Row>
         <VideoList width={12} videos={videos} />
       </Row>

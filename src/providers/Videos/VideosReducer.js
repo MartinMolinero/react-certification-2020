@@ -12,7 +12,7 @@ export const initialState = {
   search: '',
 };
 
-export function NewVideosReducer(state, action) {
+export function VideosReducer(state, action) {
   let parsedState = {};
   let videoState = {};
   let favorites = [];
@@ -51,5 +51,3 @@ export function NewVideosReducer(state, action) {
       return state;
   }
 }
-
-export default NewVideosReducer;

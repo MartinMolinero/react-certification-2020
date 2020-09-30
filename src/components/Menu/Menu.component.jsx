@@ -26,7 +26,11 @@ const Menu = () => {
         {authenticated && <Searchbar />}
         <Nav>
           {authenticated && (
-            <Button variant="outline-danger" onClick={deAuthenticate}>
+            <Button
+              data-testid="logout-button"
+              variant="outline-danger"
+              onClick={deAuthenticate}
+            >
               Logout
             </Button>
           )}

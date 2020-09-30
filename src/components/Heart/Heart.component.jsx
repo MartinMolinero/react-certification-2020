@@ -9,9 +9,15 @@ const HeartItem = ({ id }) => {
   return (
     <span>
       {isFavorite(id) ? (
-        <RedFilledHeart onClick={() => removeFavoriteVideo(id)} />
+        <RedFilledHeart
+          data-testid="red-filled-heart"
+          onClick={() => removeFavoriteVideo(id)}
+        />
       ) : (
-        <RedBorderHeart onClick={() => saveFavoriteVideo(id)} />
+        <RedBorderHeart
+          data-testid="red-border-heart"
+          onClick={() => saveFavoriteVideo(id)}
+        />
       )}
     </span>
   );
