@@ -15,7 +15,6 @@ describe('AuthProviderModule', () => {
     };
     it('auths mocked user', () => {
       loginApi('wizeline', 'Rocks!').then((res) => {
-        console.log('Res', res);
         expect(res).toEqual(mockedUser);
       });
     });
