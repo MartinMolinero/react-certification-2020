@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useMemo, useReducer } from 'react';
 import { VideosReducer, initialState } from './VideosReducer';
 import {
   concatVideosAction,
@@ -22,8 +22,8 @@ export const VideosProvider = ({ children }) => {
     ...state,
     isFavorite,
     setSearchQuery: searchVideosAction(dispatch),
-    setVideos: setVideosAction(dispatch),
-    concatVideos: concatVideosAction(dispatch),
+    setVideos: useMemo(() => setVideosAction(dispatch), [dispatch]),
+    concatVideos: useMemo(() => concatVideosAction(dispatch), [dispatch]),
     // setVideos: useCallback(() => setVideosAction(dispatch), [dispatch]),
     // concatVideos: useCallback(() => concatVideosAction(dispatch), [dispatch]),
     saveFavoriteVideo: saveFavoriteVideoAction(dispatch),
