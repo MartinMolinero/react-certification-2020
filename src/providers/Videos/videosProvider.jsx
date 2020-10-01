@@ -32,7 +32,7 @@ export const VideosProvider = ({ children }) => {
 
   useEffect(() => {
     storage.set('videos', JSON.stringify(state));
-  }, [state.videos, state.favorites, state.search]);
+  }, [state.videos, state.favorites, state.search, state]);
 
   return <VideosContext.Provider value={value}> {children}</VideosContext.Provider>;
 };

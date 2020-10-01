@@ -1,19 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import SearchIcon from '@material-ui/icons/Search';
 import { Form, FormControl, Button } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import VideosContext from '../../providers/Videos/VideosContext';
 import './Searchbar.css';
 
 const Searchbar = () => {
   const history = useHistory();
   const [search, setSearch] = useState('');
-  const { setSearchQuery } = useContext(VideosContext);
+
   const setVideoQuery = (e) => {
     e.preventDefault();
     if (!search) return;
-    setSearchQuery(search);
-    history.push('/search');
+    history.push(`/search?query=${search}`, true);
   };
 
   const handleSearchChange = (event) => {

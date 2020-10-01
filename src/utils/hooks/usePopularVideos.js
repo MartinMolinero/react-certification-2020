@@ -1,10 +1,10 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useCallback } from 'react';
 import youtubeAPI from '../API/youtubeAPI';
 import VideosContext from '../../providers/Videos/VideosContext';
 
 function usePopularVideos() {
   const { videos, setVideos } = useContext(VideosContext);
-  function fetchVideos() {
+  const fetchVideos = useCallback(async () => {
     console.log('FETCHING Popular');
     youtubeAPI
       .get('/search', {
@@ -19,7 +19,7 @@ function usePopularVideos() {
       .catch((error) => {
         console.log('Error', error);
       });
-  }
+  }, [setVideos]);
 
   // useEffect(() => {
   //   fetchVideos();
@@ -27,7 +27,7 @@ function usePopularVideos() {
 
   useEffect(() => {
     fetchVideos();
-  }, []);
+  });
 
   return videos || [];
 }

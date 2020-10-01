@@ -1,10 +1,11 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useCallback } from 'react';
 import youtubeAPI from '../API/youtubeAPI';
 import VideosContext from '../../providers/Videos/VideosContext';
 
 function useSearchVideos() {
   const { search, videos, setVideos } = useContext(VideosContext);
-  async function fetchQueriedVideos() {
+
+  const fetchQueriedVideos = useCallback(() => {
     console.log('FETCHING Search');
     youtubeAPI
       .get('/search', {
@@ -18,11 +19,11 @@ function useSearchVideos() {
       .catch((err) => {
         console.log('Error ', err);
       });
-  }
+  }, [search, setVideos]);
 
   useEffect(() => {
     fetchQueriedVideos();
-  }, [search]);
+  }, [search, fetchQueriedVideos]);
 
   // useEffect(() => {
   //   fetchQueriedVideos();

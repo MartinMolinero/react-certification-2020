@@ -1,10 +1,11 @@
-import { useEffect, useContext } from 'react';
+import { useEffect, useContext, useCallback } from 'react';
 import youtubeAPI from '../API/youtubeAPI';
 import VideosContext from '../../providers/Videos/VideosContext';
 
 function useRelatedVideos(videoId) {
   const { videos, concatVideos } = useContext(VideosContext);
-  async function fetchRelatedVideos() {
+
+  const fetchRelatedVideos = useCallback(async () => {
     console.log('FETCHING Related');
     youtubeAPI
       .get('/search', {
@@ -19,11 +20,11 @@ function useRelatedVideos(videoId) {
       .catch((err) => {
         console.log('Error ', err);
       });
-  }
+  }, [videoId, concatVideos]);
 
   useEffect(() => {
     fetchRelatedVideos();
-  }, [videoId]);
+  });
   // useEffect(() => {
   //   fetchRelatedVideos();
   // });
