@@ -21,13 +21,9 @@ function usePopularVideos() {
       });
   }, [setVideos]);
 
-  // useEffect(() => {
-  //   fetchVideos();
-  // }, []);
-
   useEffect(() => {
     fetchVideos();
-  });
+  }, [fetchVideos]);
 
   return videos || [];
 }
