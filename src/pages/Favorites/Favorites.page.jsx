@@ -1,13 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import VideoList from '../../components/VideoList';
 import VideosContext from '../../providers/Videos/VideosContext';
 
 function FavoritesPage() {
-  const { favorites, fetchVideosState } = useContext(VideosContext);
-  useEffect(() => {
-    fetchVideosState();
-  }, []);
+  const { favorites } = useContext(VideosContext);
   return (
     <Container fluid>
       <Row>

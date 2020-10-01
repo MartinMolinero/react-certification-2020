@@ -1,6 +1,5 @@
 const ACTIONSENUM = {
   SEARCH_VIDEOS: 'SEARCH_VIDEOS',
-  FETCH_VIDEOS_STATE: 'FETCH_VIDEOS_STATE',
   SET_VIDEOS: 'SET_VIDEOS',
   CONCAT_VIDEOS: 'CONCAT_VIDEOS',
   SAVE_VIDEO_TO_FAVORITES: 'SAVE_VIDEO_TO_FAVORITES',
@@ -9,10 +8,6 @@ const ACTIONSENUM = {
 
 const searchVideosAction = (dispatch) => async (search) => {
   dispatch({ type: ACTIONSENUM.SEARCH_VIDEOS, payload: search });
-};
-
-const fetchVideosStateAction = (dispatch) => async (search) => {
-  dispatch({ type: ACTIONSENUM.FETCH_VIDEOS_STATE, payload: search });
 };
 
 const setVideosAction = (dispatch) => async (videoItems) => {
@@ -34,7 +29,6 @@ const removeFavoriteVideoAction = (dispatch) => async (videoId) => {
 export {
   ACTIONSENUM,
   searchVideosAction,
-  fetchVideosStateAction,
   setVideosAction,
   concatVideosAction,
   saveFavoriteVideoAction,

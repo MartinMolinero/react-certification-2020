@@ -1,7 +1,11 @@
 import React from 'react';
 
 const VideosContext = React.createContext({
-  state: {},
+  state: {
+    videos: [],
+    favorites: [],
+    search: '',
+  },
   dispatch: () => {},
 });
 

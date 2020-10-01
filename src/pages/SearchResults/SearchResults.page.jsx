@@ -1,14 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import VideoList from '../../components/VideoList';
 import { useSearchVideos } from '../../utils/hooks/useSearchVideos';
 import VideosContext from '../../providers/Videos/VideosContext';
 
 function SearchResultsPage() {
-  const { search, fetchVideosState } = useContext(VideosContext);
-  useEffect(() => {
-    fetchVideosState();
-  }, []);
+  const { search } = useContext(VideosContext);
+
   const videos = useSearchVideos();
   return (
     <Container fluid>

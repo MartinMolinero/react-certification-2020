@@ -5,6 +5,7 @@ import VideosContext from '../../providers/Videos/VideosContext';
 function useSearchVideos() {
   const { search, videos, setVideos } = useContext(VideosContext);
   async function fetchQueriedVideos() {
+    console.log('FETCHING Search');
     youtubeAPI
       .get('/search', {
         params: {
@@ -22,6 +23,10 @@ function useSearchVideos() {
   useEffect(() => {
     fetchQueriedVideos();
   }, [search]);
+
+  // useEffect(() => {
+  //   fetchQueriedVideos();
+  // });
 
   return videos;
 }

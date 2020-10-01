@@ -1,14 +1,14 @@
-import React, { useReducer } from 'react';
-import  { VideosReducer, initialState } from './VideosReducer';
+import React, { useEffect, useReducer } from 'react';
+import { VideosReducer, initialState } from './VideosReducer';
 import {
   concatVideosAction,
-  fetchVideosStateAction,
   removeFavoriteVideoAction,
   saveFavoriteVideoAction,
   searchVideosAction,
   setVideosAction,
 } from './videosActions';
 import VideosContext from './VideosContext';
+import { storage } from '../../utils/storage';
 
 export const VideosProvider = ({ children }) => {
   const [state, dispatch] = useReducer(VideosReducer, {
@@ -22,12 +22,17 @@ export const VideosProvider = ({ children }) => {
     ...state,
     isFavorite,
     setSearchQuery: searchVideosAction(dispatch),
-    fetchVideosState: fetchVideosStateAction(dispatch),
     setVideos: setVideosAction(dispatch),
     concatVideos: concatVideosAction(dispatch),
+    // setVideos: useCallback(() => setVideosAction(dispatch), [dispatch]),
+    // concatVideos: useCallback(() => concatVideosAction(dispatch), [dispatch]),
     saveFavoriteVideo: saveFavoriteVideoAction(dispatch),
     removeFavoriteVideo: removeFavoriteVideoAction(dispatch),
   };
+
+  useEffect(() => {
+    storage.set('videos', JSON.stringify(state));
+  }, [state.videos, state.favorites, state.search]);
 
   return <VideosContext.Provider value={value}> {children}</VideosContext.Provider>;
 };

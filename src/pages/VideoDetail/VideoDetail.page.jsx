@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import HeartItem from '../../components/Heart';
@@ -7,16 +7,11 @@ import VideoList from '../../components/VideoList/VideoList.component';
 import VideoVisualizer from '../../components/VideoVisualizer';
 import { filterLastRelatedVideos, findVideo } from '../../utils/arrayUtils';
 import { useRelatedVideos } from '../../utils/hooks/useRelatedVideos';
-import VideosContext from '../../providers/Videos/VideosContext';
 import { flattenVideoStructure } from '../../utils/videoUtils';
 
 function VideoDetailPage() {
   const { id } = useParams();
   const videos = useRelatedVideos(id);
-  const { fetchVideosState } = useContext(VideosContext);
-  useEffect(() => {
-    fetchVideosState();
-  }, [id]);
   const relatedVideos = filterLastRelatedVideos(videos, id);
   const currentVideo = flattenVideoStructure(findVideo(videos, id));
   return (

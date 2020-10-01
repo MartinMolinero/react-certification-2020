@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { MAX_VIDEOS_TO_FETCH } from '../constants';
 
-const KEY = 'AIzaSyCLInMjoN770cofyT-vgei2ji75KW0xW6Q';
+const KEY = 'AIzaSyAWbbdX4l-FaRiIKtyMCHjfmb7_zpsmOOU';
 
 export default axios.create({
   baseURL: 'https://www.googleapis.com/youtube/v3/',

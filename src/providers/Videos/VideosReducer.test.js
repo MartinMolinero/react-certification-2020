@@ -17,12 +17,6 @@ describe('VideosReducer', () => {
     expect(newState.search).toEqual('hello');
   });
 
-  it('Fetches videos state', () => {
-    action = { type: 'FETCH_VIDEOS_STATE', payload: 'hello' };
-    newState = VideosReducer(state, action);
-    expect(newState.search).toEqual('hello');
-  });
-
   it('Sets videos', () => {
     subArray = [videos[0], videos[1]];
     action = { type: 'SET_VIDEOS', payload: subArray };

@@ -5,6 +5,7 @@ import VideosContext from '../../providers/Videos/VideosContext';
 function usePopularVideos() {
   const { videos, setVideos } = useContext(VideosContext);
   function fetchVideos() {
+    console.log('FETCHING Popular');
     youtubeAPI
       .get('/search', {
         params: {
@@ -19,6 +20,10 @@ function usePopularVideos() {
         console.log('Error', error);
       });
   }
+
+  // useEffect(() => {
+  //   fetchVideos();
+  // }, []);
 
   useEffect(() => {
     fetchVideos();

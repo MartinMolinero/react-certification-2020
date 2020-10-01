@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from 'react';
+import React, { useState, useContext, useCallback } from 'react';
 
 import { AUTH_STORAGE_KEY } from '../../utils/constants';
 import { storage } from '../../utils/storage';
@@ -32,26 +32,17 @@ function useAuth() {
 }
 
 function AuthProvider({ children }) {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [authenticatedUser, setAuthenticatedUser] = useState(null);
-
-  useEffect(() => {
-    const userSaved = JSON.parse(storage.get('user'));
-    const lastAuthState = storage.get(AUTH_STORAGE_KEY);
-    const isAuthenticated = Boolean(lastAuthState);
-    setAuthenticatedUser(userSaved);
-    setAuthenticated(isAuthenticated);
-  }, []);
+  const [authenticatedUser, setAuthenticatedUser] = useState(() =>
+    JSON.parse(storage.get('user'))
+  );
 
   const login = useCallback(() => {
-    setAuthenticated(true);
     setAuthenticatedUser(mockedUser);
     storage.set(AUTH_STORAGE_KEY, true);
     storage.set('user', JSON.stringify(mockedUser));
   }, []);
 
   const logout = useCallback(() => {
-    setAuthenticated(false);
     setAuthenticatedUser(null);
     storage.set(AUTH_STORAGE_KEY, false);
     storage.set('user', null);
@@ -59,7 +50,9 @@ function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ login, logout, authenticated, authenticatedUser }}>
+    <AuthContext.Provider
+      value={{ login, logout, authenticated: !!authenticatedUser, authenticatedUser }}
+    >
       {children}
     </AuthContext.Provider>
   );
