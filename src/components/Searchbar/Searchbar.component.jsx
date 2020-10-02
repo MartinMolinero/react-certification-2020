@@ -11,7 +11,7 @@ const Searchbar = () => {
   const setVideoQuery = (e) => {
     e.preventDefault();
     if (!search) return;
-    history.push(`/search?query=${search}`, true);
+    history.push(`/search?query=${search}`);
   };
 
   const handleSearchChange = (event) => {

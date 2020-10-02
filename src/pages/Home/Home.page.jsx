@@ -10,7 +10,7 @@ function HomePage() {
   return (
     <section className="homepage" ref={sectionRef}>
       <h1>Welcome to the challenge!</h1>
-      {authenticated ? <Redirect to="/explore" /> : <Link to="/login">let me in →</Link>}
+      {authenticated ? <Redirect to="/explore" /> : <Link data-testid={'login-link'} to="/login">let me in →</Link>}
     </section>
   );
 }

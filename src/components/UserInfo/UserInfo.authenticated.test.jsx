@@ -11,7 +11,7 @@ jest.mock('../../providers/Auth', () => ({
     },
   }),
 }));
-describe('USER INFO', () => {
+describe('USER INFO authenticated', () => {
   it('renders the component if the user is authenticated', () => {
     render(<UserInfo />);
     const img = screen.getByRole('img');

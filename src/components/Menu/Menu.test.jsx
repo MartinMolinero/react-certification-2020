@@ -21,5 +21,6 @@ describe('MENU', () => {
     const button = screen.getByTestId('logout-button');
     userEvent.click(button, { button: 0 });
     renderer.rerender();
+    expect(screen.queryAllByTestId('logout-button')).toEqual([]);
   });
 });

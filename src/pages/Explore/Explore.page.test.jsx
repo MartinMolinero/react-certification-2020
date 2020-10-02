@@ -87,6 +87,7 @@ describe('ExplorePage', () => {
         </VideosProvider>
       </BrowserRouter>
     );
+    expect(screen.getByTestId('explore-page-container')).toBeInTheDocument()
     expect(screen.getByTestId('row-videos-container')).toBeInTheDocument();
     expect(screen.getAllByTestId('video-item').length).toEqual(2);
   });

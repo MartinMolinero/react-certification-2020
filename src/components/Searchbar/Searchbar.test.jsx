@@ -24,7 +24,7 @@ describe('Searchbar', () => {
   });
 
   it('simulates search click', async () => {
-    render(
+    const searchbar = render(
       <BrowserRouter>
         <VideosProvider>
           <Searchbar />
@@ -33,5 +33,7 @@ describe('Searchbar', () => {
     );
     const btn = screen.getByRole('button');
     userEvent.click(btn, { button: 0 });
+    searchbar.rerender();
+    expect(screen.queryAllByRole('button')).toEqual([])
   });
 });

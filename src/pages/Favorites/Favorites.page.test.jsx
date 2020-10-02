@@ -10,6 +10,7 @@ describe('FavoritesPage', () => {
         <FavoritesPage />
       </VideosProvider>
     );
+    expect(screen.getByTestId('favorite-videos-container')).toBeInTheDocument();
     expect(screen.getByTestId('row-videos-container')).toBeInTheDocument();
     expect(screen.getByRole('heading').innerHTML).toEqual('No videos found');
   });

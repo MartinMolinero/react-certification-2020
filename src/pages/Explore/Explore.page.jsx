@@ -6,7 +6,7 @@ import { usePopularVideos } from '../../utils/hooks/usePopularVideos';
 function ExplorePage() {
   const videos = usePopularVideos();
   return (
-    <Container fluid>
+    <Container fluid data-testid={'explore-page-container'}>
       <Row>
         <VideoList width={12} videos={videos} />
       </Row>

@@ -6,7 +6,7 @@ import VideosContext from '../../providers/Videos/VideosContext';
 function FavoritesPage() {
   const { favorites } = useContext(VideosContext);
   return (
-    <Container fluid>
+    <Container fluid data-testid={'favorite-videos-container'}>
       <Row>
         <VideoList width={12} videos={favorites} />
       </Row>
