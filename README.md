@@ -4,7 +4,7 @@
 
 Thank you for participating in the React Certification 2020 course! Here you'll find instructions for completing your certification.
 
-## The challenge
+## The challenge 1
 
 The purpose of the challenge is for you to demonstrate your React skills. This is your chance to show off everything you've learned during the course and to earn your certification!!
 
